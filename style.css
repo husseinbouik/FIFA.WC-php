@@ -1,0 +1,16 @@
+*{
+    box-sizing: content-box;
+}
+.container {
+    font-size: 15px;
+    background-color: rgb(194, 194, 194);
+}
+img {
+    height: 30px;
+}
+body {
+    padding-top: 30px;
+}
+.w-25 {
+    width: 34%!important;
+}
