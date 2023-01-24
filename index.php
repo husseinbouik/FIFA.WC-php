@@ -1,3 +1,6 @@
+<?php 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +15,8 @@
     <title>Document</title>
 </head>
 <body>
-    <section class="container">
-        <table class="table">
+<form method="post" action=""></form>
+        <table class="table  table-bordered table-dark table-striped text-center ">
             <thead>
               <tr>
                 <th scope="col">23 NOV 11:00H</th>
@@ -103,6 +106,71 @@
               </tr>
             </tbody>
           </table>
-    </section>
+    <table class="table  table-striped table-hover  table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Selection</th>
+          <th scope="col">PTS.</th>
+          <th scope="col">PAR</th>
+          <th scope="col">GAN.</th>
+          <th scope="col">EMP</th>
+          <th scope="col">PER</th>
+          <th scope="col">G.F.</th>
+          <th scope="col">G.C</th>
+          <th scope="col">+/-</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1.</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">2.</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">3.</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">4.</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
 </body>
 </html>
