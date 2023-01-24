@@ -1,4 +1,30 @@
 <?php 
+$scores = array();
+$class = [
+  'MARRUECOS'=> ['PTS.'  => '','PAR.'  => '','GAN.'  => '','EMP.'  => '','PER.'  => '','G.F.'  => '','G.C'  => '','+/-'  => ''],
+  'CROACIA'=> ['PTS.'  => '','PAR.'  => '','GAN.'  => '','EMP.'  => '','PER.'  => '','G.F.'  => '','G.C'  => '','+/-'  => ''],
+  'BELGICA'=> ['PTS.'  => '','PAR.'  => '','GAN.'  => '','EMP.'  => '','PER.'  => '','G.F.'  => '','G.C'  => '','+/-'  => ''],
+  'CANADA'=> ['PTS.'  => '','PAR.'  => '','GAN.'  => '','EMP.'  => '','PER.'  => '','G.F.'  => '','G.C'  => '','+/-'  => '']
+];
+print_r($class);
+// similar_text() function to find the similarity between two words "cat" and "bat"
+// similar_text("cat", "bat", $percent);
+// echo "Similarity: $percent%";
+// similar_text(string $first, string $second, float &$percent);
+
+
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+  foreach ($_POST as $key => $value){
+      $scores[$key] = $value;
+      // echo'the keys is ' .$key.'and the value is '.$value; 
+      // echo'key ='.$key.'value='.$value;
+  }
+  print_r($scores);
+}
+for ($i=0; $i < 12 ; $i++) { 
+  # code...
+}
 
 ?>
 <!DOCTYPE html>
@@ -15,7 +41,7 @@
     <title>Document</title>
 </head>
 <body>
-<form method="post" action=""></form>
+<form method="post" action="">
         <table class="table  table-bordered table-dark table-striped text-center ">
             <thead>
               <tr>
@@ -28,9 +54,9 @@
               <tr>
                 <td><img class=" img-responsive"  src="img/png-clipart-flag-of-morocco-moroccan-cuisine-logo-others-miscellaneous-flag-removebg-preview.png" alt="">MARRUECOS</td>
                 <td class="w-25"><div class="input-group  w-25  align-middle" >
-                    <input type="number" class="form-control"  aria-label="Username">
+                    <input type="number" class="form-control"  name="MO1" >
                     <span class="input-group-text">:</span>
-                    <input type="number" class="form-control"  aria-label="Server">
+                    <input type="number" class="form-control"  name="CR1">
                   </div></td>
                 <td><img class=" img-responsive"  src="img/téléchargement-removebg-preview (3).png" alt="">CROACIA</td>
               </tr>
@@ -42,9 +68,9 @@
               <tr>
                 <td><img class=" img-responsive"  src="img/578-removebg-preview.png" alt="" >BELGICA</td>
                 <td class="w-25"><div class="input-group  w-25  align-middle" >
-                    <input type="number" class="form-control"  aria-label="Username">
+                    <input type="number" class="form-control"  name="BEL1">
                     <span class="input-group-text">:</span>
-                    <input type="number" class="form-control"  aria-label="Server">
+                    <input type="number" class="form-control"  name="CA1">
                   </div></td>
                 <td><img class=" img-responsive"  src="img/téléchargement-removebg-preview (4).png" alt="">CANADA</td>
               </tr>
@@ -56,9 +82,9 @@
               <tr>
                 <td><img class=" img-responsive"  src="img/578-removebg-preview.png" alt="" >BELGICA</td>
                 <td class="w-25"><div class="input-group  w-25  align-middle" >
-                    <input type="number" class="form-control"  aria-label="Username">
+                    <input type="number" class="form-control"  name="BEL2" >
                     <span class="input-group-text">:</span>
-                    <input type="number" class="form-control"  aria-label="Server">
+                    <input type="number" class="form-control"  name="MO2">
                   </div></td>
                   <td><img class=" img-responsive"  src="img/png-clipart-flag-of-morocco-moroccan-cuisine-logo-others-miscellaneous-flag-removebg-preview.png" alt="" >MARRUECOS</td>
               </tr>
@@ -70,9 +96,9 @@
               <tr>
                 <td><img class=" img-responsive"  src="img/téléchargement-removebg-preview (3).png" alt="">CROACIA</td>
                 <td class="w-25"><div class="input-group  w-25  align-middle" >
-                    <input type="number" class="form-control"  aria-label="Username">
+                    <input type="number" class="form-control"  name="CR2">
                     <span class="input-group-text">:</span>
-                    <input type="number" class="form-control"  aria-label="Server">
+                    <input type="number" class="form-control"  name="CA2">
                   </div></td>
                   <td><img class=" img-responsive"  src="img/téléchargement-removebg-preview (4).png" alt="">CANADA</td>
               </tr>
@@ -84,9 +110,9 @@
               <tr>
                 <td><img class=" img-responsive"  src="img/téléchargement-removebg-preview (3).png" alt="">CROACIA</td>
                 <td class="w-25"><div class="input-group  w-25  align-middle" >
-                    <input type="number" class="form-control"  aria-label="Username">
+                    <input type="number" class="form-control"  name="CR3">
                     <span class="input-group-text">:</span>
-                    <input type="number" class="form-control"  aria-label="Server">
+                    <input type="number" class="form-control"  name="BEL3">
                   </div></td>
                   <td><img class=" img-responsive"  src="img/578-removebg-preview.png" alt="" >BELGICA</td>
               </tr>
@@ -98,14 +124,16 @@
               <tr>
                 <td><img class=" img-responsive"   src="img/téléchargement-removebg-preview (4).png" alt="">CANADA</td>
                 <td class="w-25"><div class="input-group  w-25  align-middle" >
-                    <input type="number" class="form-control"  aria-label="Username">
+                    <input type="number" class="form-control"  name="CA3">
                     <span class="input-group-text">:</span>
-                    <input type="number" class="form-control"  aria-label="Server">
+                    <input type="number" class="form-control"  name="MO3">
                   </div></td>
                   <td><img class=" img-responsive"  src="img/png-clipart-flag-of-morocco-moroccan-cuisine-logo-others-miscellaneous-flag-removebg-preview.png" alt="" >MARRUECOS</td>
               </tr>
             </tbody>
           </table>
+          <button type="submit" class="btn btn-success">Success</button>
+</form>
     <table class="table  table-striped table-hover  table-bordered">
       <thead>
         <tr>
