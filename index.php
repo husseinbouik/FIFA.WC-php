@@ -1,266 +1,3 @@
-<?php
-$teams =["MARRUECOS", "CROACIA", "BELGICA", "CANADA"];
-$class = array();
-foreach ($teams as $team) {
-  $class[$team] = array( "PTS." => 0,"PAR." => 0,"GAN." => 0,"EMP." => 0,"PER." => 0,"G.F." => 0,"G.C." => 0, "+/-" => 0);
-}
-$scores = array();
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  foreach ($_POST as $key => $value) {
-    $scores[$key] = $value;
-  }
-  for ($i = 0; $i < 12; $i += 2) {
-    if ( array_values($scores)[$i] > array_values($scores)[$i + 1]) {
-      similar_text("$teams[0]", array_keys($scores)[$i], $mo);
-      similar_text("$teams[1]", array_keys($scores)[$i], $cr);
-      similar_text("$teams[2]", array_keys($scores)[$i], $be);
-      similar_text("$teams[3]", array_keys($scores)[$i], $ca);
-      $largest = $mo;
-      $largest = max($mo, $cr, $be, $ca);
-      if ($largest == $mo){
-        $class["$teams[0]"]['PTS.'] += 3;
-        $class["$teams[0]"]['PAR.'] += 1;
-        $class["$teams[0]"]['GAN.'] += 1;
-        $class["$teams[0]"]['EMP.'] += 0;
-        $class["$teams[0]"]['PER.'] += 0;
-        $class["$teams[0]"]['G.F.'] += (int) array_values($scores)[$i];
-        $class["$teams[0]"]['G.C.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[0]"]['+/-'] = $class["$teams[0]"]['G.F.'] - $class["$teams[0]"]['G.C.'];
-      } elseif ($largest == $cr) {
-        $class["$teams[1]"]['PTS.'] += 3;
-        $class["$teams[1]"]['PAR.'] += 1;
-        $class["$teams[1]"]['GAN.'] += 1;
-        $class["$teams[1]"]['EMP.'] += 0;
-        $class["$teams[1]"]['PER.'] += 0;
-        $class["$teams[1]"]['G.F.'] += (int) array_values($scores)[$i];
-        $class["$teams[1]"]['G.C.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[1]"]['+/-'] = $class["$teams[1]"]['G.F.'] - $class["$teams[1]"]['G.C.'];
-      } elseif ($largest == $be) {
-        $class["$teams[2]"]['PTS.'] += 3;
-        $class["$teams[2]"]['PAR.'] += 1;
-        $class["$teams[2]"]['GAN.'] += 1;
-        $class["$teams[2]"]['EMP.'] += 0;
-        $class["$teams[2]"]['PER.'] += 0;
-        $class["$teams[2]"]['G.F.'] += (int) array_values($scores)[$i];
-        $class["$teams[2]"]['G.C.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[2]"]['+/-'] = $class["$teams[2]"]['G.F.'] - $class["$teams[2]"]['G.C.'];
-      } elseif ($largest == $ca) {
-        $class["$teams[3]"]['PTS.'] += 3;
-        $class["$teams[3]"]['PAR.'] += 1;
-        $class["$teams[3]"]['GAN.'] += 1;
-        $class["$teams[3]"]['EMP.'] += 0;
-        $class["$teams[3]"]['PER.'] += 0;
-        $class["$teams[3]"]['G.F.'] += (int) array_values($scores)[$i];
-        $class["$teams[3]"]['G.C.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[3]"]['+/-'] = $class["$teams[3]"]['G.F.'] - $class["$teams[3]"]['G.C.'];
-      }
-      similar_text("$teams[0]", array_keys($scores)[$i + 1], $mo);
-      similar_text("$teams[1]", array_keys($scores)[$i + 1], $cr);
-      similar_text("$teams[2]", array_keys($scores)[$i + 1], $be);
-      similar_text("$teams[3]", array_keys($scores)[$i + 1], $ca);
-      $largest = $mo;
-      $largest = max($mo, $cr, $be, $ca);
-      if ($largest == $mo) {
-        $class["$teams[0]"]['PER.'] += 1;
-        $class["$teams[0]"]['PAR.'] += 1;
-        $class["$teams[0]"]['G.F.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[0]"]['G.C.'] += (int) array_values($scores)[$i];
-        $class["$teams[0]"]['+/-'] = $class["$teams[0]"]['G.F.'] - $class["$teams[0]"]['G.C.'];
-      } elseif ($largest == $cr) {
-        $class["$teams[1]"]['PER.'] += 1;
-        $class["$teams[1]"]['PAR.'] += 1;
-        $class["$teams[1]"]['G.F.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[1]"]['G.C.'] += (int) array_values($scores)[$i];
-        $class["$teams[1]"]['+/-'] = $class["$teams[1]"]['G.F.'] - $class["$teams[1]"]['G.C.'];
-      } elseif ($largest == $be) {
-        $class["$teams[2]"]['PER.'] += 1;
-        $class["$teams[2]"]['PAR.'] += 1;
-        $class["$teams[2]"]['G.F.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[2]"]['G.C.'] += (int) array_values($scores)[$i];
-        $class["$teams[2]"]['+/-'] = $class["$teams[2]"]['G.F.'] - $class["$teams[2]"]['G.C.'];
-      } elseif ($largest == $ca) {
-        $class["$teams[3]"]['PER.'] += 1;
-        $class["$teams[3]"]['PAR.'] += 1;
-        $class["$teams[3]"]['G.F.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[3]"]['G.C.'] += (int) array_values($scores)[$i];
-        $class["$teams[3]"]['+/-'] = $class["$teams[3]"]['G.F.'] - $class["$teams[3]"]['G.C.'];
-      }
-    } elseif (array_values($scores)[$i] < array_values($scores)[$i + 1]) {
-      similar_text("$teams[0]", array_keys($scores)[$i + 1], $mo);
-      similar_text("$teams[1]", array_keys($scores)[$i + 1], $cr);
-      similar_text("$teams[2]", array_keys($scores)[$i + 1], $be);
-      similar_text("$teams[3]", array_keys($scores)[$i + 1], $ca);
-      $largest = $mo;
-      $largest = max($mo, $cr, $be, $ca);
-      if ($largest == $mo) {
-        $class["$teams[0]"]['PTS.'] += 3;
-        $class["$teams[0]"]['PAR.'] += 1;
-        $class["$teams[0]"]['GAN.'] += 1;
-        $class["$teams[0]"]['EMP.'] += 0;
-        $class["$teams[0]"]['PER.'] += 0;
-        $class["$teams[0]"]['G.F.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[0]"]['G.C.'] += (int) array_values($scores)[$i];
-        $class["$teams[0]"]['+/-'] = $class["$teams[0]"]['G.F.'] - $class["$teams[0]"]['G.C.'];
-      } elseif ($largest == $cr) {
-        $class["$teams[1]"]['PTS.'] += 3;
-        $class["$teams[1]"]['PAR.'] += 1;
-        $class["$teams[1]"]['GAN.'] += 1;
-        $class["$teams[1]"]['EMP.'] += 0;
-        $class["$teams[1]"]['PER.'] += 0;
-        $class["$teams[1]"]['G.F.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[1]"]['G.C.'] += (int) array_values($scores)[$i];
-        $class["$teams[1]"]['+/-'] = $class["$teams[1]"]['G.F.'] - $class["$teams[1]"]['G.C.'];
-      } elseif ($largest == $be) {
-        $class["$teams[2]"]['PTS.'] += 3;
-        $class["$teams[2]"]['PAR.'] += 1;
-        $class["$teams[2]"]['GAN.'] += 1;
-        $class["$teams[2]"]['EMP.'] += 0;
-        $class["$teams[2]"]['PER.'] += 0;
-        $class["$teams[2]"]['G.F.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[2]"]['G.C.'] += (int) array_values($scores)[$i];
-        $class["$teams[2]"]['+/-'] = $class["$teams[2]"]['G.F.'] - $class["$teams[2]"]['G.C.'];
-      } elseif ($largest == $ca) {
-        $class["$teams[3]"]['PTS.'] += 3;
-        $class["$teams[3]"]['PAR.'] += 1;
-        $class["$teams[3]"]['GAN.'] += 1;
-        $class["$teams[3]"]['EMP.'] += 0;
-        $class["$teams[3]"]['PER.'] += 0;
-        $class["$teams[3]"]['G.F.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[3]"]['G.C.'] += (int) array_values($scores)[$i];
-        $class["$teams[3]"]['+/-'] = $class["$teams[3]"]['G.F.'] - $class["$teams[3]"]['G.C.'];
-      }
-      similar_text("$teams[0]", array_keys($scores)[$i], $mo);
-      similar_text("$teams[1]", array_keys($scores)[$i], $cr);
-      similar_text("$teams[2]", array_keys($scores)[$i], $be);
-      similar_text("$teams[3]", array_keys($scores)[$i], $ca);
-      $largest = $mo;
-      $largest = max($mo, $cr, $be, $ca);
-      if ($largest == $mo) {
-        $class["$teams[0]"]['PER.'] += 1;
-        $class["$teams[0]"]['PAR.'] += 1;
-        $class["$teams[0]"]['G.F.'] += (int) array_values($scores)[$i];
-        $class["$teams[0]"]['G.C.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[0]"]['+/-'] = $class["$teams[0]"]['G.F.'] - $class["$teams[0]"]['G.C.'];
-      } elseif ($largest == $cr) {
-        $class["$teams[1]"]['PER.'] += 1;
-        $class["$teams[1]"]['G.F.'] += (int) array_values($scores)[$i];
-        $class["$teams[1]"]['G.C.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[1]"]['+/-'] = $class["$teams[1]"]['G.F.'] - $class["$teams[1]"]['G.C.'];
-      } elseif ($largest == $be) {
-        $class["$teams[2]"]['PER.'] += 1;
-        $class["$teams[2]"]['PAR.'] += 1;
-        $class["$teams[2]"]['G.F.'] += (int) array_values($scores)[$i];
-        $class["$teams[2]"]['G.C.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[2]"]['+/-'] = $class["$teams[2]"]['G.F.'] - $class["$teams[2]"]['G.C.'];
-      } elseif ($largest == $ca) {
-        $class["$teams[3]"]['PER.'] += 1;
-        $class["$teams[3]"]['PAR.'] += 1;
-        $class["$teams[3]"]['G.F.'] += (int) array_values($scores)[$i];
-        $class["$teams[3]"]['G.C.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[3]"]['+/-'] = $class["$teams[3]"]['G.F.'] - $class["$teams[3]"]['G.C.'];
-      }
-    } elseif (array_values($scores)[$i] == array_values($scores)[$i + 1]) {
-      similar_text("$teams[0]", array_keys($scores)[$i], $mo);
-      similar_text("$teams[1]", array_keys($scores)[$i], $cr);
-      similar_text("$teams[2]", array_keys($scores)[$i], $be);
-      similar_text("$teams[3]", array_keys($scores)[$i], $ca);
-      $largest = $mo;
-      $largest = max($mo, $cr, $be, $ca);
-      if ($largest == $mo) {
-        $class["$teams[0]"]['PTS.'] += 1;
-        $class["$teams[0]"]['PAR.'] += 1;
-        $class["$teams[0]"]['GAN.'] += 0;
-        $class["$teams[0]"]['EMP.'] += 1;
-        $class["$teams[0]"]['PER.'] += 0;
-        $class["$teams[0]"]['G.F.'] += (int) array_values($scores)[$i];
-        $class["$teams[0]"]['G.C.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[0]"]['+/-'] = $class["$teams[0]"]['G.F.'] - $class["$teams[0]"]['G.C.'];
-      } elseif ($largest == $cr) {
-        $class["$teams[1]"]['PTS.'] += 1;
-        $class["$teams[1]"]['PAR.'] += 1;
-        $class["$teams[1]"]['GAN.'] += 0;
-        $class["$teams[1]"]['EMP.'] += 1;
-        $class["$teams[1]"]['PER.'] += 0;
-        $class["$teams[1]"]['G.F.'] += (int) array_values($scores)[$i];
-        $class["$teams[1]"]['G.C.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[1]"]['+/-'] = $class["$teams[1]"]['G.F.'] - $class["$teams[1]"]['G.C.'];
-      } elseif ($largest == $be) {
-        $class["$teams[2]"]['PTS.'] += 1;
-        $class["$teams[2]"]['PAR.'] += 1;
-        $class["$teams[2]"]['GAN.'] += 0;
-        $class["$teams[2]"]['EMP.'] += 1;
-        $class["$teams[2]"]['PER.'] += 0;
-        $class["$teams[2]"]['G.F.'] += (int) array_values($scores)[$i];
-        $class["$teams[2]"]['G.C.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[2]"]['+/-'] = $class["$teams[2]"]['G.F.'] - $class["$teams[2]"]['G.C.'];
-      } elseif ($largest == $ca) {
-        $class["$teams[3]"]['PTS.'] += 1;
-        $class["$teams[3]"]['PAR.'] += 1;
-        $class["$teams[3]"]['GAN.'] += 0;
-        $class["$teams[3]"]['EMP.'] += 1;
-        $class["$teams[3]"]['PER.'] += 0;
-        $class["$teams[3]"]['G.F.'] += (int) array_values($scores)[$i];
-        $class["$teams[3]"]['G.C.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[3]"]['+/-'] = $class["$teams[3]"]['G.F.'] - $class["$teams[3]"]['G.C.'];
-      }
-      similar_text("$teams[0]", array_keys($scores)[$i + 1], $mo);
-      similar_text("$teams[1]", array_keys($scores)[$i + 1], $cr);
-      similar_text("$teams[2]", array_keys($scores)[$i + 1], $be);
-      similar_text("$teams[3]", array_keys($scores)[$i + 1], $ca);
-      $largest = $mo;
-      $largest = max($mo, $cr, $be, $ca);
-      if ($largest == $mo) {
-        $class["$teams[0]"]['PTS.'] += 1;
-        $class["$teams[0]"]['PAR.'] += 1;
-        $class["$teams[0]"]['GAN.'] += 0;
-        $class["$teams[0]"]['EMP.'] += 1;
-        $class["$teams[0]"]['PER.'] += 0;
-        $class["$teams[0]"]['G.F.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[0]"]['G.C.'] += (int) array_values($scores)[$i];
-        $class["$teams[0]"]['+/-'] = $class["$teams[0]"]['G.F.'] - $class["$teams[0]"]['G.C.'];;
-      } elseif ($largest == $cr) {
-        $class["$teams[1]"]['PTS.'] += 1;
-        $class["$teams[1]"]['PAR.'] += 1;
-        $class["$teams[1]"]['GAN.'] += 0;
-        $class["$teams[1]"]['EMP.'] += 1;
-        $class["$teams[1]"]['PER.'] += 0;
-        $class["$teams[1]"]['G.F.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[1]"]['G.C.'] += (int) array_values($scores)[$i];
-        $class["$teams[1]"]['+/-'] = $class["$teams[1]"]['G.F.'] - $class["$teams[1]"]['G.C.'];
-      } elseif ($largest == $be) {
-        $class["$teams[2]"]['PTS.'] += 1;
-        $class["$teams[2]"]['PAR.'] += 1;
-        $class["$teams[2]"]['GAN.'] += 0;
-        $class["$teams[2]"]['EMP.'] += 1;
-        $class["$teams[2]"]['PER.'] += 0;
-        $class["$teams[2]"]['G.F.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[2]"]['G.C.'] += (int) array_values($scores)[$i];
-        $class["$teams[2]"]['+/-'] = $class["$teams[2]"]['G.F.'] - $class["$teams[2]"]['G.C.'];
-      } elseif ($largest == $ca) {
-        $class["$teams[3]"]['PTS.'] += 1;
-        $class["$teams[3]"]['PAR.'] += 1;
-        $class["$teams[3]"]['GAN.'] += 0;
-        $class["$teams[3]"]['EMP.'] += 1;
-        $class["$teams[3]"]['PER.'] += 0;
-        $class["$teams[3]"]['G.F.'] += (int) array_values($scores)[$i + 1];
-        $class["$teams[3]"]['G.C.'] += (int) array_values($scores)[$i];
-        $class["$teams[3]"]['+/-'] = $class["$teams[3]"]['G.F.'] - $class["$teams[3]"]['G.C.'];
-      }
-    }
-  }
-  for ($i = 0; $i < 3; $i++) {
-    uasort($class, function ($a, $b) {
-      if ($a['PTS.'] == $b['PTS.']) {
-        if ($a['+/-'] == $b['+/-']) {
-          return $b['G.F.'] - $a['G.F.'];
-        }
-        return $b['+/-'] - $a['+/-'];
-      }
-      return $b['PTS.'] - $a['PTS.'];
-    });
-  }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -421,6 +158,267 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </thead>
     <tbody>
       <?php
+      $teams =["MARRUECOS", "CROACIA", "BELGICA", "CANADA"];
+      $class = array();
+      foreach ($teams as $team) {
+        $class[$team] = array( "PTS." => 0,"PAR." => 0,"GAN." => 0,"EMP." => 0,"PER." => 0,"G.F." => 0,"G.C." => 0, "+/-" => 0);
+      }
+      $scores = array();
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        foreach ($_POST as $key => $value) {
+          $scores[$key] = $value;
+        }
+        for ($i = 0; $i < 12; $i += 2) {
+          if ( array_values($scores)[$i] > array_values($scores)[$i + 1]) {
+            similar_text("$teams[0]", array_keys($scores)[$i], $mo);
+            similar_text("$teams[1]", array_keys($scores)[$i], $cr);
+            similar_text("$teams[2]", array_keys($scores)[$i], $be);
+            similar_text("$teams[3]", array_keys($scores)[$i], $ca);
+            $largest = $mo;
+            $largest = max($mo, $cr, $be, $ca);
+            if ($largest == $mo){
+              $class["$teams[0]"]['PTS.'] += 3;
+              $class["$teams[0]"]['PAR.'] += 1;
+              $class["$teams[0]"]['GAN.'] += 1;
+              $class["$teams[0]"]['EMP.'] += 0;
+              $class["$teams[0]"]['PER.'] += 0;
+              $class["$teams[0]"]['G.F.'] += (int) array_values($scores)[$i];
+              $class["$teams[0]"]['G.C.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[0]"]['+/-'] = $class["$teams[0]"]['G.F.'] - $class["$teams[0]"]['G.C.'];
+            } elseif ($largest == $cr) {
+              $class["$teams[1]"]['PTS.'] += 3;
+              $class["$teams[1]"]['PAR.'] += 1;
+              $class["$teams[1]"]['GAN.'] += 1;
+              $class["$teams[1]"]['EMP.'] += 0;
+              $class["$teams[1]"]['PER.'] += 0;
+              $class["$teams[1]"]['G.F.'] += (int) array_values($scores)[$i];
+              $class["$teams[1]"]['G.C.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[1]"]['+/-'] = $class["$teams[1]"]['G.F.'] - $class["$teams[1]"]['G.C.'];
+            } elseif ($largest == $be) {
+              $class["$teams[2]"]['PTS.'] += 3;
+              $class["$teams[2]"]['PAR.'] += 1;
+              $class["$teams[2]"]['GAN.'] += 1;
+              $class["$teams[2]"]['EMP.'] += 0;
+              $class["$teams[2]"]['PER.'] += 0;
+              $class["$teams[2]"]['G.F.'] += (int) array_values($scores)[$i];
+              $class["$teams[2]"]['G.C.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[2]"]['+/-'] = $class["$teams[2]"]['G.F.'] - $class["$teams[2]"]['G.C.'];
+            } elseif ($largest == $ca) {
+              $class["$teams[3]"]['PTS.'] += 3;
+              $class["$teams[3]"]['PAR.'] += 1;
+              $class["$teams[3]"]['GAN.'] += 1;
+              $class["$teams[3]"]['EMP.'] += 0;
+              $class["$teams[3]"]['PER.'] += 0;
+              $class["$teams[3]"]['G.F.'] += (int) array_values($scores)[$i];
+              $class["$teams[3]"]['G.C.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[3]"]['+/-'] = $class["$teams[3]"]['G.F.'] - $class["$teams[3]"]['G.C.'];
+            }
+            similar_text("$teams[0]", array_keys($scores)[$i + 1], $mo);
+            similar_text("$teams[1]", array_keys($scores)[$i + 1], $cr);
+            similar_text("$teams[2]", array_keys($scores)[$i + 1], $be);
+            similar_text("$teams[3]", array_keys($scores)[$i + 1], $ca);
+            $largest = $mo;
+            $largest = max($mo, $cr, $be, $ca);
+            if ($largest == $mo) {
+              $class["$teams[0]"]['PER.'] += 1;
+              $class["$teams[0]"]['PAR.'] += 1;
+              $class["$teams[0]"]['G.F.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[0]"]['G.C.'] += (int) array_values($scores)[$i];
+              $class["$teams[0]"]['+/-'] = $class["$teams[0]"]['G.F.'] - $class["$teams[0]"]['G.C.'];
+            } elseif ($largest == $cr) {
+              $class["$teams[1]"]['PER.'] += 1;
+              $class["$teams[1]"]['PAR.'] += 1;
+              $class["$teams[1]"]['G.F.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[1]"]['G.C.'] += (int) array_values($scores)[$i];
+              $class["$teams[1]"]['+/-'] = $class["$teams[1]"]['G.F.'] - $class["$teams[1]"]['G.C.'];
+            } elseif ($largest == $be) {
+              $class["$teams[2]"]['PER.'] += 1;
+              $class["$teams[2]"]['PAR.'] += 1;
+              $class["$teams[2]"]['G.F.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[2]"]['G.C.'] += (int) array_values($scores)[$i];
+              $class["$teams[2]"]['+/-'] = $class["$teams[2]"]['G.F.'] - $class["$teams[2]"]['G.C.'];
+            } elseif ($largest == $ca) {
+              $class["$teams[3]"]['PER.'] += 1;
+              $class["$teams[3]"]['PAR.'] += 1;
+              $class["$teams[3]"]['G.F.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[3]"]['G.C.'] += (int) array_values($scores)[$i];
+              $class["$teams[3]"]['+/-'] = $class["$teams[3]"]['G.F.'] - $class["$teams[3]"]['G.C.'];
+            }
+          } elseif (array_values($scores)[$i] < array_values($scores)[$i + 1]) {
+            similar_text("$teams[0]", array_keys($scores)[$i + 1], $mo);
+            similar_text("$teams[1]", array_keys($scores)[$i + 1], $cr);
+            similar_text("$teams[2]", array_keys($scores)[$i + 1], $be);
+            similar_text("$teams[3]", array_keys($scores)[$i + 1], $ca);
+            $largest = $mo;
+            $largest = max($mo, $cr, $be, $ca);
+            if ($largest == $mo) {
+              $class["$teams[0]"]['PTS.'] += 3;
+              $class["$teams[0]"]['PAR.'] += 1;
+              $class["$teams[0]"]['GAN.'] += 1;
+              $class["$teams[0]"]['EMP.'] += 0;
+              $class["$teams[0]"]['PER.'] += 0;
+              $class["$teams[0]"]['G.F.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[0]"]['G.C.'] += (int) array_values($scores)[$i];
+              $class["$teams[0]"]['+/-'] = $class["$teams[0]"]['G.F.'] - $class["$teams[0]"]['G.C.'];
+            } elseif ($largest == $cr) {
+              $class["$teams[1]"]['PTS.'] += 3;
+              $class["$teams[1]"]['PAR.'] += 1;
+              $class["$teams[1]"]['GAN.'] += 1;
+              $class["$teams[1]"]['EMP.'] += 0;
+              $class["$teams[1]"]['PER.'] += 0;
+              $class["$teams[1]"]['G.F.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[1]"]['G.C.'] += (int) array_values($scores)[$i];
+              $class["$teams[1]"]['+/-'] = $class["$teams[1]"]['G.F.'] - $class["$teams[1]"]['G.C.'];
+            } elseif ($largest == $be) {
+              $class["$teams[2]"]['PTS.'] += 3;
+              $class["$teams[2]"]['PAR.'] += 1;
+              $class["$teams[2]"]['GAN.'] += 1;
+              $class["$teams[2]"]['EMP.'] += 0;
+              $class["$teams[2]"]['PER.'] += 0;
+              $class["$teams[2]"]['G.F.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[2]"]['G.C.'] += (int) array_values($scores)[$i];
+              $class["$teams[2]"]['+/-'] = $class["$teams[2]"]['G.F.'] - $class["$teams[2]"]['G.C.'];
+            } elseif ($largest == $ca) {
+              $class["$teams[3]"]['PTS.'] += 3;
+              $class["$teams[3]"]['PAR.'] += 1;
+              $class["$teams[3]"]['GAN.'] += 1;
+              $class["$teams[3]"]['EMP.'] += 0;
+              $class["$teams[3]"]['PER.'] += 0;
+              $class["$teams[3]"]['G.F.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[3]"]['G.C.'] += (int) array_values($scores)[$i];
+              $class["$teams[3]"]['+/-'] = $class["$teams[3]"]['G.F.'] - $class["$teams[3]"]['G.C.'];
+            }
+            similar_text("$teams[0]", array_keys($scores)[$i], $mo);
+            similar_text("$teams[1]", array_keys($scores)[$i], $cr);
+            similar_text("$teams[2]", array_keys($scores)[$i], $be);
+            similar_text("$teams[3]", array_keys($scores)[$i], $ca);
+            $largest = $mo;
+            $largest = max($mo, $cr, $be, $ca);
+            if ($largest == $mo) {
+              $class["$teams[0]"]['PER.'] += 1;
+              $class["$teams[0]"]['PAR.'] += 1;
+              $class["$teams[0]"]['G.F.'] += (int) array_values($scores)[$i];
+              $class["$teams[0]"]['G.C.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[0]"]['+/-'] = $class["$teams[0]"]['G.F.'] - $class["$teams[0]"]['G.C.'];
+            } elseif ($largest == $cr) {
+              $class["$teams[1]"]['PER.'] += 1;
+              $class["$teams[1]"]['G.F.'] += (int) array_values($scores)[$i];
+              $class["$teams[1]"]['G.C.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[1]"]['+/-'] = $class["$teams[1]"]['G.F.'] - $class["$teams[1]"]['G.C.'];
+            } elseif ($largest == $be) {
+              $class["$teams[2]"]['PER.'] += 1;
+              $class["$teams[2]"]['PAR.'] += 1;
+              $class["$teams[2]"]['G.F.'] += (int) array_values($scores)[$i];
+              $class["$teams[2]"]['G.C.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[2]"]['+/-'] = $class["$teams[2]"]['G.F.'] - $class["$teams[2]"]['G.C.'];
+            } elseif ($largest == $ca) {
+              $class["$teams[3]"]['PER.'] += 1;
+              $class["$teams[3]"]['PAR.'] += 1;
+              $class["$teams[3]"]['G.F.'] += (int) array_values($scores)[$i];
+              $class["$teams[3]"]['G.C.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[3]"]['+/-'] = $class["$teams[3]"]['G.F.'] - $class["$teams[3]"]['G.C.'];
+            }
+          } elseif (array_values($scores)[$i] == array_values($scores)[$i + 1]) {
+            similar_text("$teams[0]", array_keys($scores)[$i], $mo);
+            similar_text("$teams[1]", array_keys($scores)[$i], $cr);
+            similar_text("$teams[2]", array_keys($scores)[$i], $be);
+            similar_text("$teams[3]", array_keys($scores)[$i], $ca);
+            $largest = $mo;
+            $largest = max($mo, $cr, $be, $ca);
+            if ($largest == $mo) {
+              $class["$teams[0]"]['PTS.'] += 1;
+              $class["$teams[0]"]['PAR.'] += 1;
+              $class["$teams[0]"]['GAN.'] += 0;
+              $class["$teams[0]"]['EMP.'] += 1;
+              $class["$teams[0]"]['PER.'] += 0;
+              $class["$teams[0]"]['G.F.'] += (int) array_values($scores)[$i];
+              $class["$teams[0]"]['G.C.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[0]"]['+/-'] = $class["$teams[0]"]['G.F.'] - $class["$teams[0]"]['G.C.'];
+            } elseif ($largest == $cr) {
+              $class["$teams[1]"]['PTS.'] += 1;
+              $class["$teams[1]"]['PAR.'] += 1;
+              $class["$teams[1]"]['GAN.'] += 0;
+              $class["$teams[1]"]['EMP.'] += 1;
+              $class["$teams[1]"]['PER.'] += 0;
+              $class["$teams[1]"]['G.F.'] += (int) array_values($scores)[$i];
+              $class["$teams[1]"]['G.C.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[1]"]['+/-'] = $class["$teams[1]"]['G.F.'] - $class["$teams[1]"]['G.C.'];
+            } elseif ($largest == $be) {
+              $class["$teams[2]"]['PTS.'] += 1;
+              $class["$teams[2]"]['PAR.'] += 1;
+              $class["$teams[2]"]['GAN.'] += 0;
+              $class["$teams[2]"]['EMP.'] += 1;
+              $class["$teams[2]"]['PER.'] += 0;
+              $class["$teams[2]"]['G.F.'] += (int) array_values($scores)[$i];
+              $class["$teams[2]"]['G.C.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[2]"]['+/-'] = $class["$teams[2]"]['G.F.'] - $class["$teams[2]"]['G.C.'];
+            } elseif ($largest == $ca) {
+              $class["$teams[3]"]['PTS.'] += 1;
+              $class["$teams[3]"]['PAR.'] += 1;
+              $class["$teams[3]"]['GAN.'] += 0;
+              $class["$teams[3]"]['EMP.'] += 1;
+              $class["$teams[3]"]['PER.'] += 0;
+              $class["$teams[3]"]['G.F.'] += (int) array_values($scores)[$i];
+              $class["$teams[3]"]['G.C.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[3]"]['+/-'] = $class["$teams[3]"]['G.F.'] - $class["$teams[3]"]['G.C.'];
+            }
+            similar_text("$teams[0]", array_keys($scores)[$i + 1], $mo);
+            similar_text("$teams[1]", array_keys($scores)[$i + 1], $cr);
+            similar_text("$teams[2]", array_keys($scores)[$i + 1], $be);
+            similar_text("$teams[3]", array_keys($scores)[$i + 1], $ca);
+            $largest = $mo;
+            $largest = max($mo, $cr, $be, $ca);
+            if ($largest == $mo) {
+              $class["$teams[0]"]['PTS.'] += 1;
+              $class["$teams[0]"]['PAR.'] += 1;
+              $class["$teams[0]"]['GAN.'] += 0;
+              $class["$teams[0]"]['EMP.'] += 1;
+              $class["$teams[0]"]['PER.'] += 0;
+              $class["$teams[0]"]['G.F.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[0]"]['G.C.'] += (int) array_values($scores)[$i];
+              $class["$teams[0]"]['+/-'] = $class["$teams[0]"]['G.F.'] - $class["$teams[0]"]['G.C.'];;
+            } elseif ($largest == $cr) {
+              $class["$teams[1]"]['PTS.'] += 1;
+              $class["$teams[1]"]['PAR.'] += 1;
+              $class["$teams[1]"]['GAN.'] += 0;
+              $class["$teams[1]"]['EMP.'] += 1;
+              $class["$teams[1]"]['PER.'] += 0;
+              $class["$teams[1]"]['G.F.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[1]"]['G.C.'] += (int) array_values($scores)[$i];
+              $class["$teams[1]"]['+/-'] = $class["$teams[1]"]['G.F.'] - $class["$teams[1]"]['G.C.'];
+            } elseif ($largest == $be) {
+              $class["$teams[2]"]['PTS.'] += 1;
+              $class["$teams[2]"]['PAR.'] += 1;
+              $class["$teams[2]"]['GAN.'] += 0;
+              $class["$teams[2]"]['EMP.'] += 1;
+              $class["$teams[2]"]['PER.'] += 0;
+              $class["$teams[2]"]['G.F.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[2]"]['G.C.'] += (int) array_values($scores)[$i];
+              $class["$teams[2]"]['+/-'] = $class["$teams[2]"]['G.F.'] - $class["$teams[2]"]['G.C.'];
+            } elseif ($largest == $ca) {
+              $class["$teams[3]"]['PTS.'] += 1;
+              $class["$teams[3]"]['PAR.'] += 1;
+              $class["$teams[3]"]['GAN.'] += 0;
+              $class["$teams[3]"]['EMP.'] += 1;
+              $class["$teams[3]"]['PER.'] += 0;
+              $class["$teams[3]"]['G.F.'] += (int) array_values($scores)[$i + 1];
+              $class["$teams[3]"]['G.C.'] += (int) array_values($scores)[$i];
+              $class["$teams[3]"]['+/-'] = $class["$teams[3]"]['G.F.'] - $class["$teams[3]"]['G.C.'];
+            }
+          }
+        }
+        for ($i = 0; $i < 3; $i++) {
+          uasort($class, function ($a, $b) {
+            if ($a['PTS.'] == $b['PTS.']) {
+              if ($a['+/-'] == $b['+/-']) {
+                return $b['G.F.'] - $a['G.F.'];
+              }
+              return $b['+/-'] - $a['+/-'];
+            }
+            return $b['PTS.'] - $a['PTS.'];
+          });
+        }
+      }
       $countries = array(
         "$teams[0]" => 'img/png-clipart-flag-of-morocco-moroccan-cuisine-logo-others-miscellaneous-flag-removebg-preview.png',
         "$teams[1]" => 'img/téléchargement-removebg-preview (3).png',
