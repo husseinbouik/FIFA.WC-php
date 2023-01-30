@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -116,7 +115,6 @@
         </tr>
       </tbody>
     </table>
-    <!-- <button type="submit" class="btn btn-success">Success</button> -->
     <div class="buttons">
   <button type="submit" class="blob-btn">
     Blob Button
@@ -158,6 +156,8 @@
     </thead>
     <tbody>
       <?php
+            similar_text("fatima ", "fatimazahera ", $fati);
+      echo $fati;
       $teams =["MARRUECOS", "CROACIA", "BELGICA", "CANADA"];
       $class = array();
       foreach ($teams as $team) {
@@ -170,6 +170,7 @@
         }
         for ($i = 0; $i < 12; $i += 2) {
           if ( array_values($scores)[$i] > array_values($scores)[$i + 1]) {
+            // returns the number of matching characters between two strings, expressed as a percentage
             similar_text("$teams[0]", array_keys($scores)[$i], $mo);
             similar_text("$teams[1]", array_keys($scores)[$i], $cr);
             similar_text("$teams[2]", array_keys($scores)[$i], $be);
@@ -213,6 +214,7 @@
               $class["$teams[3]"]['G.C.'] += (int) array_values($scores)[$i + 1];
               $class["$teams[3]"]['+/-'] = $class["$teams[3]"]['G.F.'] - $class["$teams[3]"]['G.C.'];
             }
+            // the team that lost the match 
             similar_text("$teams[0]", array_keys($scores)[$i + 1], $mo);
             similar_text("$teams[1]", array_keys($scores)[$i + 1], $cr);
             similar_text("$teams[2]", array_keys($scores)[$i + 1], $be);
@@ -410,13 +412,13 @@
         for ($i = 0; $i < 3; $i++) {
           uasort($class, function ($a, $b) {
             if ($a['PTS.'] == $b['PTS.']) {
-              if ($a['+/-'] == $b['+/-']) {
-                return $b['G.F.'] - $a['G.F.'];
+              if ($a['G.F.'] == $b['G.F.']) {
+                return $b['+/-'] - $a['+/-'];
               }
-              return $b['+/-'] - $a['+/-'];
+              return $b['G.F.'] - $a['G.F.'];
             }
             return $b['PTS.'] - $a['PTS.'];
-          });
+          });          
         }
       }
       $countries = array(
