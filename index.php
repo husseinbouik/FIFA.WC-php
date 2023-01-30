@@ -277,19 +277,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
   <form method="post" action="">
-    <table class="table  table-bordered table-dark table-striped text-center ">
+    <table class="table    table-striped table custom-table  ">
       <thead>
         <tr>
           <th scope="col">23 NOV 11:00H</th>
-          <th scope="col">FINALIZADO</th>
+          <th scope="col" class="text-center">FINALIZADO</th>
           <th scope="col">PARTIDO 9</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><img class=" img-responsive" src="img/png-clipart-flag-of-morocco-moroccan-cuisine-logo-others-miscellaneous-flag-removebg-preview.png" alt="">MARRUECOS</td>
-          <td class="w-25">
-            <div class="input-group  w-25  align-middle">
+          <td>
+            <div class="input-group w-25 mx-auto ">
               <input type="number" class="form-control" name="MARRUECOS1">
               <span class="input-group-text">:</span>
               <input type="number" class="form-control" name="CROACIA1">
@@ -298,14 +298,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <td><img class=" img-responsive" src="img/téléchargement-removebg-preview (3).png" alt="">CROACIA</td>
         </tr>
         <tr>
-          <td>23 NOV 20:00H</th>
-          <td>FINALIZADO</th>
-          <td>PARTIDO 12</th>
+          <td>23 NOV 20:00H</td>
+          <td class="text-center">FINALIZADO</td>
+          <td>PARTIDO 12</td>
         </tr>
         <tr>
           <td><img class=" img-responsive" src="img/578-removebg-preview.png" alt="">BELGICA</td>
-          <td class="w-25">
-            <div class="input-group  w-25  align-middle">
+          <td>
+            <div class="input-group w-25 mx-auto">
               <input type="number" class="form-control" name="BELGICA1">
               <span class="input-group-text">:</span>
               <input type="number" class="form-control" name="CANADA1">
@@ -314,14 +314,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <td><img class=" img-responsive" src="img/téléchargement-removebg-preview (4).png" alt="">CANADA</td>
         </tr>
         <tr>
-          <td>27 NOV 14:00H</th>
-          <td>FINALIZADO</th>
-          <td>PARTIDO 26</th>
+          <td>27 NOV 14:00H</td>
+          <td class="text-center">FINALIZADO</td>
+          <td>PARTIDO 26</td>
         </tr>
         <tr>
           <td><img class=" img-responsive" src="img/578-removebg-preview.png" alt="">BELGICA</td>
-          <td class="w-25">
-            <div class="input-group  w-25  align-middle">
+          <td>
+            <div class="input-group w-25 mx-auto">
               <input type="number" class="form-control" name="BELGICA2">
               <span class="input-group-text">:</span>
               <input type="number" class="form-control" name="MARRUECOS2">
@@ -330,14 +330,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <td><img class=" img-responsive" src="img/png-clipart-flag-of-morocco-moroccan-cuisine-logo-others-miscellaneous-flag-removebg-preview.png" alt="">MARRUECOS</td>
         </tr>
         <tr>
-          <td>27 NOV 17:00H</th>
-          <td>FINALIZADO</th>
-          <td>PARTIDO 27</th>
+          <td>27 NOV 17:00H</td>
+          <td class="text-center">FINALIZADO</td>
+          <td>PARTIDO 27</td>
         </tr>
         <tr>
           <td><img class=" img-responsive" src="img/téléchargement-removebg-preview (3).png" alt="">CROACIA</td>
-          <td class="w-25">
-            <div class="input-group  w-25  align-middle">
+          <td>
+            <div class="input-group w-25 mx-auto">
               <input type="number" class="form-control" name="CROACIA2">
               <span class="input-group-text">:</span>
               <input type="number" class="form-control" name="CANADA2">
@@ -346,14 +346,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <td><img class=" img-responsive" src="img/téléchargement-removebg-preview (4).png" alt="">CANADA</td>
         </tr>
         <tr>
-          <td>01 Dec 1:00H</th>
-          <td>FINALIZADO</th>
-          <td>PARTIDO 41</th>
+          <td>01 Dec 1:00H</td>
+          <td class="text-center">FINALIZADO</td>
+          <td>PARTIDO 41</td>
         </tr>
         <tr>
           <td><img class=" img-responsive" src="img/téléchargement-removebg-preview (3).png" alt="">CROACIA</td>
-          <td class="w-25">
-            <div class="input-group  w-25  align-middle">
+          <td>
+            <div class="input-group w-25 mx-auto">
               <input type="number" class="form-control" name="CROACIA3">
               <span class="input-group-text">:</span>
               <input type="number" class="form-control" name="BELGICA3">
@@ -362,14 +362,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <td><img class=" img-responsive" src="img/578-removebg-preview.png" alt="">BELGICA</td>
         </tr>
         <tr>
-          <td>01 Dec 16:00H</th>
-          <td>FINALIZADO</th>
-          <td>PARTIDO 42</th>
+          <td>01 Dec 16:00H</td>
+          <td class="text-center">FINALIZADO</td>
+          <td>PARTIDO 42</td>
         </tr>
         <tr>
           <td><img class=" img-responsive" src="img/téléchargement-removebg-preview (4).png" alt="">CANADA</td>
-          <td class="w-25">
-            <div class="input-group  w-25  align-middle">
+          <td>
+            <div class="input-group w-25 mx-auto">
               <input type="number" class="form-control" name="CANADA3">
               <span class="input-group-text">:</span>
               <input type="number" class="form-control" name="MARRUECOS3">
@@ -379,9 +379,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </tr>
       </tbody>
     </table>
-    <button type="submit" class="btn btn-success">Success</button>
+    <!-- <button type="submit" class="btn btn-success">Success</button> -->
+    <div class="buttons">
+  <button type="submit" class="blob-btn">
+    Blob Button
+    <span class="blob-btn__inner">
+      <span class="blob-btn__blobs">
+        <span class="blob-btn__blob"></span>
+        <span class="blob-btn__blob"></span>
+        <span class="blob-btn__blob"></span>
+        <span class="blob-btn__blob"></span>
+      </span>
+    </span>
+  </button>
+  <br/>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+    <filter id="goo">
+      <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
+      <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+    </filter>
+  </defs>
+</svg>
   </form>
-  <table class="table  table-striped table-hover  table-bordered">
+  <table class="table  table-striped table-hover  table-bordered ">
     <thead>
       <tr>
         <th scope="col">#</th>
