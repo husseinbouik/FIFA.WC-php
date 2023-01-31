@@ -13,7 +13,7 @@
 
 <body>
   <form method="post" action="">
-    <table class="table    table-striped table custom-table  ">
+    <table class="table table-striped table custom-table  ">
       <thead>
         <tr>
           <th scope="col">23 NOV 11:00H</th>
@@ -26,9 +26,9 @@
           <td><img class=" img-responsive" src="img/png-clipart-flag-of-morocco-moroccan-cuisine-logo-others-miscellaneous-flag-removebg-preview.png" alt="">MARRUECOS</td>
           <td>
             <div class="input-group w-25 mx-auto ">
-              <input type="number" class="form-control" name="MARRUECOS1">
+              <input type="number"min="0" class="form-control" value="<?php if (isset($_POST['MARRUECOS1'])) echo $_POST['MARRUECOS1']; ?>" name="MARRUECOS1">
               <span class="input-group-text">:</span>
-              <input type="number" class="form-control" name="CROACIA1">
+              <input type="number"min="0" class="form-control" value="<?php if (isset($_POST['CROACIA1'])) echo $_POST['CROACIA1']; ?>" name="CROACIA1">
             </div>
           </td>
           <td><img class=" img-responsive" src="img/téléchargement-removebg-preview (3).png" alt="">CROACIA</td>
@@ -42,9 +42,9 @@
           <td><img class=" img-responsive" src="img/578-removebg-preview.png" alt="">BELGICA</td>
           <td>
             <div class="input-group w-25 mx-auto">
-              <input type="number" class="form-control" name="BELGICA1">
+              <input type="number"min="0" class="form-control" value="<?php if (isset($_POST['BELGICA1'])) echo $_POST['BELGICA1']; ?>" name="BELGICA1">
               <span class="input-group-text">:</span>
-              <input type="number" class="form-control" name="CANADA1">
+              <input type="number"min="0" class="form-control" value="<?php if (isset($_POST['CANADA1'])) echo $_POST['CANADA1']; ?>" name="CANADA1">
             </div>
           </td>
           <td><img class=" img-responsive" src="img/téléchargement-removebg-preview (4).png" alt="">CANADA</td>
@@ -58,9 +58,9 @@
           <td><img class=" img-responsive" src="img/578-removebg-preview.png" alt="">BELGICA</td>
           <td>
             <div class="input-group w-25 mx-auto">
-              <input type="number" class="form-control" name="BELGICA2">
+              <input type="number"min="0" class="form-control" value="<?php if (isset($_POST['BELGICA2'])) echo $_POST['BELGICA2']; ?>" name="BELGICA2">
               <span class="input-group-text">:</span>
-              <input type="number" class="form-control" name="MARRUECOS2">
+              <input type="number"min="0" class="form-control" value="<?php if (isset($_POST['MARRUECOS2'])) echo $_POST['MARRUECOS2']; ?>" name="MARRUECOS2">
             </div>
           </td>
           <td><img class=" img-responsive" src="img/png-clipart-flag-of-morocco-moroccan-cuisine-logo-others-miscellaneous-flag-removebg-preview.png" alt="">MARRUECOS</td>
@@ -74,9 +74,9 @@
           <td><img class=" img-responsive" src="img/téléchargement-removebg-preview (3).png" alt="">CROACIA</td>
           <td>
             <div class="input-group w-25 mx-auto">
-              <input type="number" class="form-control" name="CROACIA2">
+              <input type="number"min="0" class="form-control" value="<?php if (isset($_POST['CROACIA2'])) echo $_POST['CROACIA2']; ?>" name="CROACIA2">
               <span class="input-group-text">:</span>
-              <input type="number" class="form-control" name="CANADA2">
+              <input type="number"min="0" class="form-control" value="<?php if (isset($_POST['CANADA2'])) echo $_POST['CANADA2']; ?>" name="CANADA2">
             </div>
           </td>
           <td><img class=" img-responsive" src="img/téléchargement-removebg-preview (4).png" alt="">CANADA</td>
@@ -90,9 +90,9 @@
           <td><img class=" img-responsive" src="img/téléchargement-removebg-preview (3).png" alt="">CROACIA</td>
           <td>
             <div class="input-group w-25 mx-auto">
-              <input type="number" class="form-control" name="CROACIA3">
+              <input type="number"min="0" class="form-control" value="<?php if (isset($_POST['CROACIA3'])) echo $_POST['CROACIA3']; ?>" name="CROACIA3">
               <span class="input-group-text">:</span>
-              <input type="number" class="form-control" name="BELGICA3">
+              <input type="number"min="0" class="form-control" value="<?php if (isset($_POST['BELGICA3'])) echo $_POST['BELGICA3']; ?>" name="BELGICA3">
             </div>
           </td>
           <td><img class=" img-responsive" src="img/578-removebg-preview.png" alt="">BELGICA</td>
@@ -106,18 +106,19 @@
           <td><img class=" img-responsive" src="img/téléchargement-removebg-preview (4).png" alt="">CANADA</td>
           <td>
             <div class="input-group w-25 mx-auto">
-              <input type="number" class="form-control" name="CANADA3">
+              <input type="number"min="0" class="form-control" value="<?php if (isset($_POST['CANADA3'])) echo $_POST['CANADA3']; ?>" name="CANADA3">
               <span class="input-group-text">:</span>
-              <input type="number" class="form-control" name="MARRUECOS3">
+              <input type="number"min="0"class="form-control" value="<?php if (isset($_POST['MARRUECOS3'])) echo $_POST['MARRUECOS3']; ?>" name="MARRUECOS3">
             </div>
           </td>
           <td><img class=" img-responsive" src="img/png-clipart-flag-of-morocco-moroccan-cuisine-logo-others-miscellaneous-flag-removebg-preview.png" alt="">MARRUECOS</td>
         </tr>
       </tbody>
     </table>
+    <!-- <button type="submit" class="btn btn-success">Success</button> -->
     <div class="buttons">
   <button type="submit" class="blob-btn">
-    Blob Button
+    STIMULATE
     <span class="blob-btn__inner">
       <span class="blob-btn__blobs">
         <span class="blob-btn__blob"></span>
@@ -128,7 +129,6 @@
     </span>
   </button>
   <br/>
-
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
   <defs>
     <filter id="goo">
@@ -138,6 +138,7 @@
     </filter>
   </defs>
 </svg>
+</div>
   </form>
   <table class="table  table-striped table-hover  table-bordered ">
     <thead>
@@ -156,8 +157,6 @@
     </thead>
     <tbody>
       <?php
-            similar_text("fatima ", "fatimazahera ", $fati);
-      echo $fati;
       $teams =["MARRUECOS", "CROACIA", "BELGICA", "CANADA"];
       $class = array();
       foreach ($teams as $team) {
@@ -214,7 +213,6 @@
               $class["$teams[3]"]['G.C.'] += (int) array_values($scores)[$i + 1];
               $class["$teams[3]"]['+/-'] = $class["$teams[3]"]['G.F.'] - $class["$teams[3]"]['G.C.'];
             }
-            // the team that lost the match 
             similar_text("$teams[0]", array_keys($scores)[$i + 1], $mo);
             similar_text("$teams[1]", array_keys($scores)[$i + 1], $cr);
             similar_text("$teams[2]", array_keys($scores)[$i + 1], $be);
@@ -412,13 +410,13 @@
         for ($i = 0; $i < 3; $i++) {
           uasort($class, function ($a, $b) {
             if ($a['PTS.'] == $b['PTS.']) {
-              if ($a['G.F.'] == $b['G.F.']) {
-                return $b['+/-'] - $a['+/-'];
+              if ($a['+/-'] == $b['+/-']) {
+                return $b['G.F.'] - $a['G.F.'];
               }
-              return $b['G.F.'] - $a['G.F.'];
+              return $b['+/-'] - $a['+/-'];
             }
             return $b['PTS.'] - $a['PTS.'];
-          });          
+          });
         }
       }
       $countries = array(
